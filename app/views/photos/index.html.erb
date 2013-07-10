@@ -1,0 +1,31 @@
+<h1>Listing photos for <%= @album.name %></h1>
+<br />
+<%= link_to 'Back to All Albums', albums_path %>
+<br />
+<%= link_to 'New Photo', new_album_photo_path %>
+
+<table>
+  <tr>
+    <th>Photo Name:</th>
+    <th>Picture</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= photo.name %></td>
+    <td><%= image_tag photo.picture %></td>
+    <td><%= link_to 'Show', album_photo_path(@album, photo) %></td>
+    <td><%= link_to 'Edit', edit_album_photo_path(@album, photo) %></td>
+    <td><%= link_to 'Destroy', album_photo_path(@album, photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
+
