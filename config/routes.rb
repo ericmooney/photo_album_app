@@ -1,9 +1,21 @@
 PhotoAlbumApp::Application.routes.draw do
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'signup' => 'users#new', :as => :signup
+
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+  resources :password_resets
+  resources :user_sessions
+
   resources :albums do
     resources :photos, :except => :index
   end
 
-  root :to =>  'albums#index'
+  root :to =>  'users#index'
 
 
   # The priority is based upon order of creation:
