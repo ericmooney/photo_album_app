@@ -1,29 +1,15 @@
-feature "login" do
-  scenario "" do
+require 'spec_helper'
+
+feature "album" do
+  scenario "album gets created and shows successful notification on next page" do
 
     visit new_album_path
-    find("#log-in").fill_in "Email", :with => user.email
-    find("#log-in").fill_in "Password", :with => user.password
+    fill_in "album[name]", :with => "Cold Winter"
 
-    click_on "Login"
+    click_on "Create Album"
 
-    expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Logged in")
-
-  end
-
-  scenario "" do
-
-    album = FactoryGirl.create(:album)
-
-    visit album_path
-    find("#log-in").fill_in "Email", :with => user.email
-    find("#log-in").fill_in "Password", :with => user.password
-
-    click_on "Login"
-
-    expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Logged in")
-
+    expect(current_path).to eq(album_path(Album.last))
+    expect(page).to have_content("successfully created")
   end
 end
+
