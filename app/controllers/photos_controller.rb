@@ -1,16 +1,4 @@
 class PhotosController < ApplicationController
-  # GET /photos
-  # GET /photos.json
-  def index
-    @photos = Photo.all
-    @album = Album.find(params[:album_id])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @photos }
-    end
-  end
-
   # GET /photos/1
   # GET /photos/1.json
   def show
@@ -83,7 +71,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to album_photos_url }
+      format.html { redirect_to album_url(@album) }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
 PhotoAlbumApp::Application.routes.draw do
   resources :albums do
-    resources :photos
+    resources :photos, :except => :index
   end
 
   root :to =>  'albums#index'

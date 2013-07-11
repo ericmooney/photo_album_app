@@ -6,9 +6,9 @@
 </p>
 
 <%= link_to 'Edit this Photo', edit_album_photo_path(@album, @photo) %> |
-<%= link_to 'Back to All Photos for this Album', album_photos_path(@album) %>
+<%= link_to 'Back to All Photos for this Album', album_path(@album) %>
 
-
+<!-- Need to update this so that the size is manageable -->
 <p>
   <b>Photo Name:</b>
     <%= @photo.name %> </br>
