@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "photo" do
   scenario "photo gets created" do
-
+    # I think I need to find a way to login first ,before this page is viewed
     album = FactoryGirl.create(:album)
 
     visit new_album_photo_path(album)

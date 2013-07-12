@@ -25,11 +25,16 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    @album = Album.new
+    @user = User.find(session[:user_id])
+    if @user.albums.length < 2 #|| user subscription plan id != nil
+      @album = Album.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @album }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @album }
+      end
+    else
+      redirect_to albums_path, alert: "Only Premium members can create more than 2 Albums."
     end
   end
 

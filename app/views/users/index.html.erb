@@ -1,3 +1,7 @@
 <h1>My Flickerer</h1>
 
 <h2>Upload your favorite photos</h2>
+
+<% if current_user %>
+  <%= link_to "View My Albums", albums_path %>
+<% end %>

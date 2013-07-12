@@ -1,6 +1,10 @@
 <h1>Listing <%= @user.email %>'s Albums</h1>
 
-<%= link_to 'New Album', new_album_path %>
+<% if @user.albums.length < 2 #|| user subscription plan id != nil %>
+  <%= link_to 'New Album', new_album_path %>
+<% else %>
+  To Add more Albums: <%= link_to 'Become a Premium User', edit_user_path(current_user.id) %>
+<% end %>
 <br>
 <br>
 <table>
