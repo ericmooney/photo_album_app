@@ -9,5 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require foundation_and_overrides
  *= require_tree .
  */
+
+ /*html {
+   width:100%;
+   height:100%;
+ }*/
+
+ body {
+  background-image:url("sample.jpg") ;
+  min-height: 100%;
+ }
+
+

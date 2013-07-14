@@ -1,4 +1,4 @@
-<h1>Listing <%= @user.email %>'s Albums</h1>
+<h1><%= @user.email.split("@").first %>'s Albums</h1>
 
 <% if @user.albums.length < 2 || @user.subscription != nil %>
   <%= link_to 'New Album', new_album_path %>
@@ -10,7 +10,7 @@
 <table>
   <tr>
     <th>Album Name</th>
-    <th> | Number of Photos</th>
+    <th>Number of Photos</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,10 +18,11 @@
 
 <% @albums.each do |album| %>
   <tr>
-    <td><%= album.name %> - </td>
+    <td><%= album.name %> </td>
     <td><%= album.photos.length %></td>
     <td><%= link_to 'Show', album %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
+    <!-- The destroy currently causes 2 pop-ups. Figure out why -->
     <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

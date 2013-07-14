@@ -26,7 +26,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new.json
   def new
     @user = User.find(session[:user_id])
-    if @user.albums.length < 2 #|| user subscription plan id != nil
+    if (@user.albums.length < 2 || @user.subscription != nil)
       @album = Album.new
 
       respond_to do |format|
