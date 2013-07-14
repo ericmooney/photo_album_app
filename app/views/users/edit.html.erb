@@ -2,5 +2,16 @@
 
 <%= render 'form' %>
 
+<br>
+<br>
+<% if @user.subscription != nil %>
+  <p>You are a Premium User with unlimited Albums</p>
+<% else %>
+  Become a Premium User to have unlimited Albums!  <%= link_to 'Subscribe Here', new_subscription_path %>
+<% end %>
+
+<br>
+<br>
+
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', albums_path %>

@@ -10,6 +10,7 @@ PhotoAlbumApp::Application.routes.draw do
   end
   resources :password_resets
   resources :user_sessions
+  resources :subscriptions
 
   resources :albums do
     resources :photos, :except => :index
