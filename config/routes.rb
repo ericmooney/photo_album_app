@@ -16,6 +16,8 @@ PhotoAlbumApp::Application.routes.draw do
     resources :photos, :except => :index
   end
 
+  resources :comments
+
   root :to =>  'users#index'
 
 

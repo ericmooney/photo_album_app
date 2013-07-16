@@ -3,6 +3,9 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    @commentable = @photo
+    @comments = @commentable.comments
+    @comment = Comment.new
     @album = Album.find(params[:album_id])
 
     respond_to do |format|
@@ -16,6 +19,9 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new
     @album = Album.find(params[:album_id])
+    @commentable = @photo
+    @comments = @commentable.comments
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # new.html.erb

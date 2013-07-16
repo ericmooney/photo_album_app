@@ -1,6 +1,7 @@
 class Album < ActiveRecord::Base
-  has_many :photos
+  has_many :photos, :dependent => :destroy
   belongs_to :user
+  has_many :comments, as: :commentable
 
   attr_accessible :name, :user_id
 
