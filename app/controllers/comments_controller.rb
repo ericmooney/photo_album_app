@@ -13,10 +13,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(params[:comment])
 
     if @comment.save
-      if params[:commentable_class] = "Photo"
+      if params[:commentable_class] == "Photo"
         redirect_to album_photo_path(@commentable.album_id, @commentable.id), notice: 'Comment was successfully created.'
       else
-        redirect_to [@album], notice: 'Comment was successfully created.'
+        redirect_to album_path(@commentable.id), notice: 'Comment was successfully created.'
       end
     else
       render action: "new"
